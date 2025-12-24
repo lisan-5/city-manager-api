@@ -1,0 +1,23 @@
+<?php
+
+namespace App\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class UpdateCityRequest extends FormRequest
+{
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    public function rules(): array
+    {
+        return [
+            'name' => 'sometimes|required|string|max:255',
+            'country' => 'sometimes|required|string|max:255',
+            'population' => 'sometimes|required|integer|min:0',
+            'founded_at' => 'sometimes|required|date_format:Y-m-d',
+        ];
+    }
+}
